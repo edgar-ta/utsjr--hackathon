@@ -1,3 +1,11 @@
+require('dotenv').config();
+const router = require("express").Router();
+const UsuarioBD = require('../bd/UsuarioBD');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+const secret = process.env.SECRET_KEY; 
+
 router.get('/login', (req, res) => {
     res.render('login');
 });
@@ -21,7 +29,7 @@ router.post('/login', async (req, res) => {
                 { expiresIn: '1h' }
             );
             res.cookie('token', token, { httpOnly: true, secure: false });
-            res.redirect('/calculadora');
+            res.redirect('/'); //paguina a donde se redireccionara al verificar las credenciales 
         } else {
             res.status(401).json({ message: 'Correo o contraseña incorrectos' });
         }
