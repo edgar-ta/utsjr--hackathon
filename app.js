@@ -3,10 +3,10 @@ const path = require("path");
 const mainRoutes = require("./routes/main-routes");
 
 const app = express();
-const port = process.env.PORT || 3_000;
-const dotenv = require("dotenv");
+const port = process.env.PORT || 3000;
+//const dotenv = require("dotenv");
 
-dotenv.config();
+//dotenv.config();
 
 app.set("view engine", "ejs");
 
